@@ -1,7 +1,7 @@
 # Default Homepage
 Temporary Repo : https://github.com/CronixYT/cc-smarttrash-app
 ## GET Home (“/”)
-	Details :
+Details :
 Default home page
 Login button
 Sign up button
@@ -11,7 +11,7 @@ Sign up button
 ```
 
 ## GET Login (“/login”)
-	Details : 
+Details : 
 Login form page
 Return : 
 ```
@@ -19,7 +19,7 @@ Return :
 ```
 
 ## GET Sign Up (“/signup”)
-	Details : 
+Details : 
 Sign up form page
 Return : 
 ```
@@ -27,7 +27,7 @@ Return :
 ```
 
 ## POST Login (“/login”)
-	Details : 
+Details : 
 Find username & password in Database
 Redirect to User Homepage (“/user/home”) if successful
 	Return :
@@ -37,7 +37,7 @@ Redirect to "/user/home" -> { status: "success", message: "Welcome ${username} t
 
 	
 ## POST Sign Up (“/signup”)
-	Details : 
+Details : 
 Insert username & password into Database (Minimum 7 characters)
 Redirect to Login Page (“/login”)
 	Return : 
@@ -50,7 +50,7 @@ data: { username: "Bangkit", password: "Bangkit" }
 
 # User Homepage
 ## GET User Home (“/user/home”)
-	Details : 
+Details : 
 User home page
 Scan, Redeem, Logout button
 Return : 
@@ -65,7 +65,7 @@ trash_temp: null  } }
 ```
 
 ## GET User Scan (“/user/scan”)
-	Details : 
+Details : 
 Trash scan page
 	Return : 
 ```
@@ -73,7 +73,7 @@ Trash scan page
 ```
 
 ## GET User Scan Add (“/user/scan/add”)
-	Details : 
+Details : 
 Render the scanned trash
 Able to select the amount of the scanned trash
 3 Buttons on below (Scan again, Delete temp trash, and Create QR Code)
@@ -85,7 +85,7 @@ data: [ { name: "Plastic Bottle", est_trash_point: 200, amount: 5 }, { name: "Me
 ```
 
 ## POST User Scan Add (“/user/scan/add”)
-	Details : 
+Details : 
 Add the scanned trash to user temp_trash array in database
 	Return : 
 ```
@@ -95,7 +95,7 @@ data: [{ name: "Plastic Bottle", est_trash_point: 200, amount: 5 }] }
 ```
 
 ## DELETE User Scan Remove (“/user/scan/remove”)
-	Details : 
+Details : 
 Remove the user temp_trash array in database
 	Return : 
 ```
@@ -103,7 +103,7 @@ Remove the user temp_trash array in database
 ```
 
 ## GET User Redeem Point (“/user/redeem”)
-	Details : 
+Details : 
 Redeem point page
 	Return : 
 ```
@@ -118,7 +118,7 @@ Redirect to Default Homepage (“/”)
 
 # QR Code
 ## GET QR Display (“/qrcode/display/:id”)
-	Details : 
+Details : 
 Display QR Code for Admin Scan
 	Return : 
 ```
@@ -134,7 +134,7 @@ imgLink: "https://storage.googleapis.com/${BUCKETNAME}/${qrId}.png" } }
 ```
 
 ## GET QR Approve (“/qrcode/approve/:id”)
-	Details : 
+Details : 
 Approving the accumulated trash
 Find the QR :id into the QR Database and update the status from “pending” to “approved”
 	Return : 
@@ -148,7 +148,7 @@ points_after: 200 } }
 ```
 
 ## POST QR Create (“/qrcode/create”)
-	Details : 
+Details : 
 Create QR Code and insert to QR Database with a UNIQUE id resulted in the link (“/qrcode/approve/:id”)
 QR Code Image is stored in Google Cloud Bucket
 QR Data consist : User id, Total Trash accumulated, and Estimated Points
