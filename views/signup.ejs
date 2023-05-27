@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <%- include('header') -%>
+  <body>
+    <h1>Sign up - Trash App</h1>
+    <% if (error) { %>
+    <p><%= error %></p>
+    <% } %>
+
+    <!-- SIGN UP FORM -->
+    <form action="/signup" method="post">
+      <input
+        class="box"
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Username"
+        required
+      /><br />
+
+      <input
+        class="box"
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password "
+        required
+      /><br />
+      <br />
+      <input type="submit" value="Submit" /><br />
+    </form>
+  </body>
+</html>
