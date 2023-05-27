@@ -1,0 +1,23 @@
+{
+  "name": "cc-trash-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^6.10.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-session": "^1.17.3",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.3.1",
+    "path": "^0.12.7",
+    "qrcode": "^1.5.3",
+    "uuid": "^9.0.0"
+  }
+}
