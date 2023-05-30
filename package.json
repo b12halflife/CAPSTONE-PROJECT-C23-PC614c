@@ -24,6 +24,7 @@
     "npm": "^9.6.7",
     "path": "^0.12.7",
     "qrcode": "^1.5.3",
+    "resize-image-buffer": "^1.0.0",
     "tfjs-tflite-node": "^0.0.2",
     "uuid": "^9.0.0"
   }

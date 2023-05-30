@@ -6,6 +6,7 @@ const gcs = new Storage({
   keyFilename: __dirname + "/service-account.json",
   projectId: "evident-bedrock-381211",
 });
+const resizeImg = require("resize-image-buffer");
 
 const bucket = gcs.bucket("waste_image");
 
@@ -26,8 +27,12 @@ function convertBufferToImage(buffer, outputPath) {
 
 let getImage = async function (bufferImg, name) {
   const outputPath = `./public/images/${name}`;
-  convertBufferToImage(bufferImg, outputPath);
-  return await tf.loadModel(bufferImg);
+  const resizeBuffer = await resizeImg(bufferImg, {
+    width: 256,
+    height: 256,
+  });
+  convertBufferToImage(resizeBuffer, outputPath);
+  return await tf.loadModel(resizeBuffer);
 };
 
 module.exports.getImage = getImage;
