@@ -20,22 +20,32 @@ router.post("/create", function (req, res, next) {
   }
   // REQ BODY = Est. Points, Total Trash
   let { id, username } = req.session.user;
-  let trash_data = req.body;
-  console.log(req.body.length);
-  if (req.body.length === undefined || req.body.length === 0) {
-    return res.redirect("/user/scan");
+  const { trash_name, amount, est_trash_points } = req.body;
+  let data = [];
+  for (let key in trash_name) {
+    data = [
+      ...data,
+      {
+        name: trash_name[key],
+        est_trash_points: parseInt(est_trash_points[key]),
+        amount: parseInt(amount[key]),
+      },
+    ];
   }
+  // FINAL DATA
+  let trash_data = data;
   let est_points = 0;
   let total_trash = 0;
   for (let key in trash_data) {
     est_points =
-      est_points + trash_data[key].est_trash_point * trash_data[key].amount;
+      est_points + trash_data[key].est_trash_points * trash_data[key].amount;
     total_trash = total_trash + trash_data[key].amount;
   }
+  console.log(total_trash);
   let generateqrId = uuidv4();
   //// QR CODE DATA -> qr img link (to cloud bucket), status, total trash, points, id, userId
   gcs.uploadBucket(generateqrId);
-  let bucketName = "BUCKETNAME";
+  let bucketName = "qrcode_image";
   let imgLink = `https://storage.googleapis.com/${bucketName}/${generateqrId}.png`;
   // CREATE QRCODE, UPLOAD TO ID TO DATABASE (FOR APPROVE LINK)
   let qrData = {

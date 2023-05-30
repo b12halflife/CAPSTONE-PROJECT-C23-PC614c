@@ -1,5 +1,11 @@
 var express = require("express");
 var router = express.Router();
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+// Convert buffer js
+const convertBuffer = require("./utils/convertbuffer");
 
 // Find User in MySQL and Update trash_temp
 const trash_temp = require("./utils/temp_trash");
@@ -30,6 +36,12 @@ router.get("/scan", function (req, res, next) {
 });
 
 // GET & PUT & DELETE for after Scanning trash
+// router.post(
+//   "/scan/test",
+//   upload.single("image"),
+//   async function (req, res, next) {}
+// );
+
 router.get("/scan/add", function (req, res, next) {
   if (!req.session.user) {
     return res.redirect("/login");
@@ -37,13 +49,21 @@ router.get("/scan/add", function (req, res, next) {
   trash_temp.findUserAndDisplay(res, req);
 });
 
-router.post("/scan/add", function (req, res, next) {
-  if (!req.session.user) {
-    return res.redirect("/login");
+router.post(
+  "/scan/add",
+  upload.single("image"),
+  async function (req, res, next) {
+    if (!req.session.user) {
+      return res.redirect("/login");
+    }
+    const output = await convertBuffer.getImage(
+      req.file.buffer,
+      req.file.originalname
+    );
+    console.log(output);
+    await trash_temp.findUserAndUpdate(res, req, output);
   }
-  let trash_data = req.body;
-  trash_temp.findUserAndUpdate(res, req, trash_data);
-});
+);
 
 router.delete("/scan/remove", function (req, res, next) {
   if (!req.session.user) {
