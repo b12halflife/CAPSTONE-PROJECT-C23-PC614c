@@ -31,7 +31,8 @@ let getImage = async function (bufferImg, name) {
     width: 256,
     height: 256,
   });
-  convertBufferToImage(resizeBuffer, outputPath);
+  // Remove // if you need to upload image to Cloud Bucket
+  // convertBufferToImage(resizeBuffer, outputPath);
   return await tf.loadModel(resizeBuffer);
 };
 
