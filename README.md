@@ -170,7 +170,7 @@ total_trash: 200,
 imgLink: "https://storage.googleapis.com/${BUCKETNAME}/${qrId}.png" } }
 ```
 
-## POST QR Request Authentication ("/qrcode/reqauth")
+## POST QR Request Authentication ("/qrcode/reqauth/:id?")
 Details :
 Requesting Authentication Code for Admin
 	Return :
