@@ -9,6 +9,7 @@
     "@google-cloud/storage": "^6.10.1",
     "@tensorflow/tfjs": "^4.6.0",
     "@tensorflow/tfjs-node": "^4.6.0",
+    "bcrypt": "^5.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",

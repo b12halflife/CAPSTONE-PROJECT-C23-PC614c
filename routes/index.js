@@ -4,6 +4,8 @@ var router = express.Router();
 const insertUser = require("./utils/insertUser");
 // Find User in MySQL for POST "/login"
 const findUser = require("./utils/findUser");
+// bcrypt
+const bcrypt = require("bcrypt");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -23,13 +25,9 @@ router.post("/signup", function (req, res, next) {
       message: "Username or Password minimum characters is 7",
     });
   }
-  // UPLOAD TO DATABASE
-  insertUser(username, password);
-  res.send({
-    status: "success",
-    message: "Successfully Signed up",
-    data: { username, password },
-  });
+  // hash & UPLOAD TO DATABASE
+  const hash = bcrypt.hashSync(password, 10);
+  insertUser(username, hash, res);
   // REDIRECT TO LOGIN PAGE
   // res.redirect("/login");
 });
@@ -41,7 +39,7 @@ router.get("/login", function (req, res, next) {
 
 router.post("/login", function (req, res, next) {
   let { username, password } = req.body;
-  // FIND IN DATABASE
+  // compare hash & FIND IN DATABASE
   findUser.findUser(username, password, res, req);
   // REDIRECT TO USER HOMEPAGE
 });
