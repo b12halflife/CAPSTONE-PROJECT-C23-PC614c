@@ -169,3 +169,12 @@ est_points: 200,
 total_trash: 200, 
 imgLink: "https://storage.googleapis.com/${BUCKETNAME}/${qrId}.png" } }
 ```
+
+## POST QR Request Authentication ("/qrcode/reqauth")
+Details :
+Requesting Authentication Code for Admin
+	Return :
+```
+{ status: "success",
+message: "Authentication Message Sent"}
+```
