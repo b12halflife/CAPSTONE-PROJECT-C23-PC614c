@@ -8,7 +8,6 @@ const gcs = require("./utils/cloudbucket");
 
 router.get("/display/:id", function (req, res, next) {
   let { id: qrId } = req.params;
-  console.log(qrId);
   // Find QR ID in Database
   qrCode.findQr(qrId, res);
 });
