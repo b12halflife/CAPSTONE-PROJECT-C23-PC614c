@@ -178,3 +178,34 @@ Requesting Authentication Code for Admin
 { status: "success",
 message: "Authentication Message Sent"}
 ```
+
+# Database Schema
+## Users
+```
+CREATE TABLE `qrcode` (
+  `qrcodeId` varchar(225) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `userId` varchar(45) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `est_points` int NOT NULL,
+  `total_trash` int NOT NULL,
+  `imgLink` varchar(225) NOT NULL,
+  `code` varchar(100) NOT NULL,
+  UNIQUE KEY `qrcodeId_UNIQUE` (`qrcodeId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+```
+
+## QR Code
+```
+CREATE TABLE `qrcode` (
+  `qrcodeId` varchar(225) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `userId` varchar(225) NOT NULL,
+  `username` varchar(225) NOT NULL,
+  `est_points` int NOT NULL,
+  `total_trash` int NOT NULL,
+  `imgLink` varchar(225) NOT NULL,
+  `code` varchar(225) NOT NULL,
+  UNIQUE KEY `qrcodeId_UNIQUE` (`qrcodeId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+```
