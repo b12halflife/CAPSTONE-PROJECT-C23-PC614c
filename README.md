@@ -81,7 +81,7 @@ Able to select the amount of the scanned trash
 ```
 { status: "success", 
 message: "Successfully displayed trash_temp", 
-data: [ { name: "Plastic Bottle", est_trash_point: 200, amount: 5 }, { name: "Metal", est_trash_point: 1000, amount: 2 } ] }
+data: [ { name: "Plastic", est_trash_point: 200}, { name: "Metal", est_trash_point: 1000} ] }
 ```
 
 ## POST User Scan Add (“/user/scan/add”)
@@ -91,7 +91,7 @@ Add the scanned trash to user temp_trash array in database
 ```
 { status: "success", 
 message: "Successfully updated trash_temp", 
-data: [{ name: "Plastic Bottle", est_trash_point: 200, amount: 5 }] }
+data: [{ name: "Plastic Bottle", est_trash_point: 200}] }
 ```
 
 ## DELETE User Scan Remove (“/user/scan/remove”)
@@ -111,7 +111,7 @@ Redeem point page
 ```
 
 ## GET Logout (“/user/logout”)
-	Details : 
+Details : 
 Logout user from application
 Remove user session
 Redirect to Default Homepage (“/”)
@@ -135,16 +135,19 @@ imgLink: "https://storage.googleapis.com/${BUCKETNAME}/${qrId}.png" } }
 
 ## GET QR Approve (“/qrcode/approve/:id”)
 Details : 
-Approving the accumulated trash
-Find the QR :id into the QR Database and update the status from “pending” to “approved”
+Display QR Code ID for Admin Authentication
 	Return : 
 ```
-{ status: "success", 
-message: "QR Code Approved and Points updated", 
-data: { 
-qrcodeId: "5d8bdcf9-cb1f-4de4-b1ff-617af383a2d6", 
-points_before: 0, 
-points_after: 200 } }
+(WEB) Render QR Code ID for Admin Authentication
+```
+
+## POST QR Approve ("/qrcode/approve/:id")
+Details :
+Approving the accumulated trash
+Find the QR :id into the QR Database and update the status from “pending” to “approved”
+	Return :
+```
+(WEB) Render QR Code ID again (status: "approved")
 ```
 
 ## POST QR Create (“/qrcode/create”)
