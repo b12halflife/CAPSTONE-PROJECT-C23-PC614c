@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./utils/header'); -%>
+  <body>
+    <%- include('./utils/navigationHome'); -%>
+    <div class="centered-form">
+      <div class="container">
+        <h1 class="text-center display-1">Smart Trash Sign Up</h1>
+        <% if(error === true) { %> <% if(locals.message) { %>
+        <p class="text-danger"><%= message %></p>
+        <% } %> <% } %> <% if(error === false) { %> <% if(locals.message) { %>
+        <p class="text-success"><%= message %></p>
+        <% } %> <% } %>
+        <form method="POST" action="/signup">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              class="form-control"
+              id="username"
+              placeholder="Enter your username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              name="password"
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter your password"
+            />
+          </div>
+          <button type="submit" style="width: 100%" class="btn btn-primary">
+            Sign Up
+          </button>
+        </form>
+        <p class="mt-3 text-center">
+          Already have an account? <a href="/login">Login</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

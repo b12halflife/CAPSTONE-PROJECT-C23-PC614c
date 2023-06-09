@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./utils/header'); -%>
+  <body>
+    <%- include('./utils/navigationUser'); -%>
+    <div class="centered-form">
+      <div class="container text-center">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">QR Code ID</th>
+              <th scope="col">Status</th>
+              <th scope="col">Estimated Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (let item of data) { %>
+            <tr>
+              <th scope="row">
+                <a href="/qrcode/display/<%= item.qrcodeId %>"
+                  ><%= item.qrcodeId %></a
+                >
+              </th>
+              <% if(item.status === "approved") { %>
+              <td class="text-success">Approved</td>
+              <% } else if (item.status === "pending") { %>
+              <td class="text-warning">Pending</td>
+              <% } %>
+
+              <td><%= item.est_points %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

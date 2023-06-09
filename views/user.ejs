@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./utils/header'); -%>
+  <body>
+    <div class="centered-form">
+      <div class="container text-center">
+        <div>
+          <% if (data) { %>
+          <h1 class="display-2">
+            Welcome <b><%= data.username %></b> to Smart Trash
+          </h1>
+          <p>
+            <span class="badge bg-success"
+              >You have <b><%= data.points %></b> points right now</span
+            >
+          </p>
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" href="/user/scan">Scan Trash</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/redeem">Redeem Points</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="/user/logout">Logout</a>
+            </li>
+          </ul>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

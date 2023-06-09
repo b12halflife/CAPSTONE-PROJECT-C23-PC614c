@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./utils/header'); -%>
+  <body>
+    <%- include('./utils/navigationUser'); -%>
+    <div class="centered-form">
+      <div class="container text-center">
+        <% if(!error) { %> <% if(data) { %>
+        <h1><%= data.qrcodeId %></h1>
+        <h4>
+          Status : <% if (data.status === "pending") { %>
+          <span id="status" class="text-warning">Pending</span>
+          <% } else if (data.status === "approved"){ %>
+          <span id="status" class="text-success">Approved</span>
+          <% } %>
+        </h4>
+        <p><b><%= data.username %></b> (<%= data.userId %>)</p>
+        <p>Estimated Points : <%= data.est_points %></p>
+        <p>Total Trash : <%= data.total_trash %></p>
+        <img id="img" src="<%= data.imgLink %>" alt="qrCode" />
+        <% } %> <% } else { %>
+        <h1 class="text-danger"><%= message %></h1>
+        <% } %>
+      </div>
+    </div>
+    <script>
+      window.onload = function () {
+        var image = document.getElementById("img");
+
+        function updateImage() {
+          image.src = "<%= data.imgLink %>";
+        }
+
+        setTimeout(updateImage, 5000);
+      };
+    </script>
+  </body>
+</html>
