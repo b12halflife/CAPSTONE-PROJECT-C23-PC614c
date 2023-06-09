@@ -21,13 +21,23 @@ router.post("/create", function (req, res, next) {
   let { id, username } = req.session.user;
   const { trash_name, amount, est_trash_points } = req.body;
   let data = [];
-  for (let key in trash_name) {
+  if (Array.isArray(trash_name) === true) {
+    for (let key in trash_name) {
+      data = [
+        ...data,
+        {
+          name: trash_name[key],
+          est_trash_points: parseInt(est_trash_points[key]),
+          amount: parseInt(amount[key]),
+        },
+      ];
+    }
+  } else {
     data = [
-      ...data,
       {
-        name: trash_name[key],
-        est_trash_points: parseInt(est_trash_points[key]),
-        amount: parseInt(amount[key]),
+        name: trash_name,
+        est_trash_points: parseInt(est_trash_points),
+        amount: parseInt(amount),
       },
     ];
   }

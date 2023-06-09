@@ -46,25 +46,25 @@ const findQr = (qrId, res) =>
     let query = `SELECT * FROM qrcode WHERE qrcodeId = '${qrId}'`;
     db.query(query, (err, result) => {
       if (err) throw err;
-      let {
-        qrcodeId,
-        status,
-        userId,
-        username,
-        est_points,
-        total_trash,
-        imgLink,
-      } = result[0];
-      let newqrData = {
-        qrcodeId,
-        status,
-        userId,
-        username,
-        est_points,
-        total_trash,
-        imgLink,
-      };
       if (result.length > 0) {
+        let {
+          qrcodeId,
+          status,
+          userId,
+          username,
+          est_points,
+          total_trash,
+          imgLink,
+        } = result[0];
+        let newqrData = {
+          qrcodeId,
+          status,
+          userId,
+          username,
+          est_points,
+          total_trash,
+          imgLink,
+        };
         res.send({
           status: "success",
           message: "QR Code Found",
