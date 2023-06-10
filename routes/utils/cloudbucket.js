@@ -9,21 +9,23 @@ const gcs = new Storage({
 });
 // fs
 const fs = require("fs");
+// path
+const path = require("path");
 
 const bucket = gcs.bucket("codeqr_image");
 
 const uploadBucket = async (generateqrId) => {
-  let url = "http://localhost:3000";
+  let url = "34.101.117.52";
   await qr.toFile(
-    `${generateqrId}.png`,
+    path.join(__dirname, `./${generateqrId}.png`),
     `${url}/qrcode/approve/${generateqrId}`,
     { width: 500, height: 500 },
     (err) => {
       if (err) throw err;
     }
   );
-  await bucket.upload(`./${generateqrId}.png`);
-  await fs.unlink(`./${generateqrId}.png`, (err) => {
+  await bucket.upload(path.join(__dirname, `./${generateqrId}.png`));
+  await fs.unlink(path.join(__dirname, `./${generateqrId}.png`), (err) => {
     if (err) throw err;
   });
 };

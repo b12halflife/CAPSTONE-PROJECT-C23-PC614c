@@ -73,7 +73,7 @@ router.post("/create", function (req, res, next) {
     message: `Successfuly created QR Code (${generateqrId})`,
     data: {
       ...qrData,
-      qrLink: `localhost:3000/qrcode/display/${generateqrId}`,
+      qrLink: `34.101.117.52/qrcode/display/${generateqrId}`,
     },
   });
   // Redirect to QR Display
