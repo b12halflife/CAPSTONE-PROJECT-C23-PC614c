@@ -2,16 +2,20 @@ const db = require("../../bin/dbconnection");
 // mailer
 const mail = require("./mail");
 
-const createQr = ({
-  qrcodeId,
-  status,
-  userId,
-  username,
-  est_points,
-  total_trash,
-  imgLink,
-  authCode,
-}) =>
+const createQr = (
+  {
+    qrcodeId,
+    status,
+    userId,
+    username,
+    est_points,
+    total_trash,
+    imgLink,
+    authCode,
+  },
+  res,
+  generateqrId
+) =>
   db.connect((err) => {
     if (err) throw err;
     let query = `INSERT INTO qrcode(qrcodeId, status, userId, username, est_points, total_trash, imgLink, code) VALUES ('${qrcodeId}', '${status}', '${userId}', '${username}', '${est_points}', '${total_trash}', '${imgLink}', '${authCode}')`;
@@ -21,6 +25,8 @@ const createQr = ({
     let query2 = `UPDATE users SET trash_temp = '' WHERE id = '${userId}'`;
     db.query(query2, (err, result) => {
       if (err) throw err;
+      // Redirect to QR Display
+      res.redirect(`/qrcode/display/${generateqrId}`);
     });
   });
 

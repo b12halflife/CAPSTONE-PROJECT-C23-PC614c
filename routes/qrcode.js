@@ -14,9 +14,6 @@ router.get("/display/:id", function (req, res, next) {
 
 /* GET // POST create QRCODE. */
 router.post("/create", function (req, res, next) {
-  if (!req.session.user) {
-    return res.redirect("/login");
-  }
   // REQ BODY = Est. Points, Total Trash
   let { id, username } = req.session.user;
   const { trash_name, amount, est_trash_points } = req.body;
@@ -68,9 +65,7 @@ router.post("/create", function (req, res, next) {
     total_trash,
     imgLink,
   };
-  qrCode.createQr({ ...qrData, authCode });
-  // Redirect to QR Display
-  res.redirect(`/qrcode/display/${generateqrId}`);
+  qrCode.createQr({ ...qrData, authCode }, res, generateqrId);
 });
 
 router.get("/approve/:id", function (req, res, next) {

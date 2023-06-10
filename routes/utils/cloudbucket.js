@@ -4,26 +4,28 @@ const qr = require("qrcode");
 const { Storage } = require("@google-cloud/storage");
 // Instantiate a storage client with credentials
 const gcs = new Storage({
-  keyFilename: __dirname + "/service-account.json",
+  keyFilename: "service-account.json",
   projectId: "evident-bedrock-381211",
 });
 // fs
 const fs = require("fs");
+// path
+const path = require("path");
 
 const bucket = gcs.bucket("codeqr_image");
 
 const uploadBucket = async (generateqrId) => {
-  let url = "http://localhost:3000";
+  let url = "https://evident-bedrock-381211.et.r.appspot.com";
   await qr.toFile(
-    `${generateqrId}.png`,
+    `/tmp/${generateqrId}.png`,
     `${url}/qrcode/approve/${generateqrId}`,
     { width: 500, height: 500 },
     (err) => {
       if (err) throw err;
     }
   );
-  await bucket.upload(`./${generateqrId}.png`);
-  await fs.unlink(`./${generateqrId}.png`, (err) => {
+  await bucket.upload(`/tmp/${generateqrId}.png`);
+  await fs.unlink(`/tmp/${generateqrId}.png`, (err) => {
     if (err) throw err;
   });
 };
