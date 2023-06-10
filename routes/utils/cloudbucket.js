@@ -4,7 +4,7 @@ const qr = require("qrcode");
 const { Storage } = require("@google-cloud/storage");
 // Instantiate a storage client with credentials
 const gcs = new Storage({
-  keyFilename: __dirname + "/service-account.json",
+  keyFilename: "service-account.json",
   projectId: "evident-bedrock-381211",
 });
 // fs
