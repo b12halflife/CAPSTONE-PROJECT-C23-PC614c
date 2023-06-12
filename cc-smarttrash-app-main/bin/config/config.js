@@ -1,7 +1,7 @@
 let config = {
   host: "localhost",
   user: "root",
-  password: "PASSWORD",
+  password: "^^O@o\'rxr>s&.6X",
   database: "smarttrash_db",
 };
 
