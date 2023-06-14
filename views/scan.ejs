@@ -4,7 +4,7 @@
   <body>
     <%- include('./utils/navigationUser'); -%>
     <div class="centered-form">
-      <div class="container text-center">
+      <div class="container text-center fs-3">
         <h1 class="display-2">Upload Picture to Scan</h1>
         <form
           method="POST"
@@ -12,17 +12,19 @@
           enctype="multipart/form-data"
         >
           <div class="form-group my-3">
-            <label for="picture">Picture</label>
+            <label class="form-label" for="picture"
+              ><i class="fa-regular fa-image fs-1"></i
+            ></label>
             <input
               name="image"
               type="file"
               accept="image/,.png,.jpg,.jpeg"
-              class="form-control-file"
+              class="form-control"
               id="image"
             />
           </div>
-          <button type="submit" style="width: 70%" class="btn btn-primary">
-            Upload
+          <button type="submit" style="width: 70%" class="btn btn-primary my-3">
+            <h1>Upload</h1>
           </button>
         </form>
         <a href="/user/scan/add"

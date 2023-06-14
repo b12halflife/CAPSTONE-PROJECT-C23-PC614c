@@ -3,14 +3,15 @@
   <%- include('./utils/header'); -%>
   <body>
     <div class="centered-form">
-      <div class="container text-center">
+      <div class="container text-center fs-1">
         <div>
           <% if (data) { %>
           <h1 class="display-2">
             Welcome <b><%= data.username %></b> to Smart Trash
+            <i class="fa-solid fa-recycle" style="color: #1764e8"></i>
           </h1>
           <p>
-            <span class="badge bg-success"
+            <span class="badge bg-success m-4"
               >You have <b><%= data.points %></b> points right now</span
             >
           </p>

@@ -3,9 +3,12 @@
   <%- include('./utils/header'); -%>
   <body>
     <%- include('./utils/navigationHome'); -%>
-    <div class="centered-form">
+    <div class="centered-form fs-1">
       <div class="container">
-        <h1 class="text-center display-1">Smart Trash Login</h1>
+        <h1 class="text-center display-1">
+          Smart Trash Login
+          <i class="fa-solid fa-right-to-bracket" style="color: #1764e8"></i>
+        </h1>
         <% if(error === true) { %> <% if(locals.message) { %>
         <p class="text-danger"><%= message %></p>
         <% } %> <% } %> <% if(error === false) { %> <% if(locals.message) { %>
@@ -17,7 +20,7 @@
             <input
               name="username"
               type="text"
-              class="form-control"
+              class="form-control p-5"
               id="username"
               placeholder="Enter your username"
             />
@@ -27,7 +30,7 @@
             <input
               name="password"
               type="password"
-              class="form-control"
+              class="form-control p-5"
               id="password"
               placeholder="Enter your password"
             />
