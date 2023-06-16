@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SmartTrash1</string>
+    <string name="sub_judul">Smart Trash, The Junk Scanning \n App Of The Future</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Info</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="title_sampah">INI ADALAH JENIS SAMPAH BOTOL PLASTIK</string>
+    <string name="sub_title_sampah">Informasi Tentang Botol Sampah  Plastik:</string>
+    <string name="desc_sampah">Barang-barang plastik dapat terurai di tanah 1000 tahun lamanya, sedangkan kantong plastik 10 hingga 1000 tahun. Botol plastik dapat terurai di alam sekitar 450 tahun. Untuk saat ini, plastik merupakan sampah yang paling lama terurai</string>
+</resources>
